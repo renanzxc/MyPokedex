@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="utf-8">
+    <title>MyPokedex</title>
+    <link rel="stylesheet" href="../static/css/style.css">
+
+  </head>
+  <body background="https://i.ytimg.com/vi/v1SabYdIlZI/maxresdefault.jpg">
+    <input class="search" id="search" placeholder="Search Pokemon">
+    <p id="alert"></p>
+    <div id="cards">  
+      <figure class="card card--normal">
+        <div class="card__image-container">
+          <img src="https://cdn.bulbagarden.net/upload/thumb/e/e2/133Eevee.png/1200px-133Eevee.png" alt="Eevee" class="card__image">   
+        </div>
+        
+        <figcaption class="card__caption">
+          <h1 class="card__name">Eevee</h1>
+
+          <h3 class="card__type">
+            normal
+          </h3>
+
+          <table class="card__stats">
+            <tbody><tr>
+              <th>HP</th>
+              <td>55</td>
+            </tr>
+            <tr>
+              <th>Attack</th>
+              <td>55</td>
+            </tr>
+            
+            <tr>
+              <th>Defense</th>
+              <td>50</td>
+            </tr>
+
+            <tr>
+              <th>Special Attack</th>
+              <td>45</td>
+            </tr>
+            <tr>
+              <th>Special Defense</th>
+              <td>65</td>
+            </tr>
+            <tr>
+              <th>Speed</th>  
+              <td>55</td>
+            </tr>
+          </tbody></table>
+          
+          <div class="card__abilities">
+            <h4 class="card__ability">
+              <span class="card__label">Ability</span>
+              Run Away
+            </h4>
+            <h4 class="card__ability">
+              <span class="card__label">Hidden Ability</span>
+              Anticipation
+            </h4>
+          </div>
+        </figcaption>
+      </figure>
+
+<script type="text/javascript">
+  // document.querySelector('#search').addEventListener('keypress', function (e) {
+  //   searchPokemon()
+  // });
+
+  document.querySelector('input[id="search"]').onkeyup = function() {
+    searchPokemon()
+  }
+  function searchPokemon(){
+    let value = document.getElementById("search").value
+
+    fetch("/search_pokemon/"+value,{ method: 'GET'}).then(function(response) {
+      response.json().then(function(data){
+        if(data.status == "1"){
+          document.getElementById("alert").innerHTML = ''
+          let numPokes = data.numPokes
+          let pokemons = JSON.parse(data.pokemons)
+          createCards(numPokes, pokemons)
+        }
+        else {
+          document.getElementById("alert").innerHTML = "<p>No pokemon found<p>"
+        }
+      })
+    })
+  }
+  
+function createCards(numPokes, pokemons){
+  var pad = "000"
+  let cards = ''
+  numPokes.forEach( num => {
+    pokemons.abilities[num] = JSON.parse(pokemons.abilities[num].replace(/'/g, '"'))
+    cards += `<figure class="card card--${pokemons.type1[num]}">`+
+      '<div class="card__image-container">'+
+        `<img src="https://assets.pokemon.com/assets/cms2/img/pokedex/full/${pad.substring(0, pad.length - (num+1).toString().length) + (num+1).toString()}.png" alt="{{name}}" class="card__image">   `+
+      '</div>'+
+      ''+
+      '<figcaption class="card__caption">'+
+        `<h1 class="card__name">${pokemons.name[num]}</h1>`+
+      ''+
+        '<h3 class="card__type">'+
+          `${pokemons.type1[num]}`+
+        '</h3>'+
+        ''+
+        '<table class="card__stats">'+
+          '<tr>'+
+            '<th>HP</th>'+
+            `<td>${pokemons.hp[num]}</td>`+
+          '</tr>'+
+          '<tr>'+
+            '<th>Attack</th>'+
+            `<td>${pokemons.attack[num]}</td>`+
+          '</tr>'+
+          ''+
+          '<tr>'+
+            '<th>Defense</th>'+
+            `<td>${pokemons.defense[num]}</td>`+
+          '</tr>'+
+          ''+
+          '<tr>'+
+            '<th>Special Attack</th>'+
+            `<td>${pokemons.sp_attack[num]}</td>`+
+          '</tr>'+
+          '<tr>'+
+            '<th>Special Defense</th>'+
+            `<td>${pokemons.sp_defense[num]}</td>`+
+          '</tr>'+
+          '<tr>'+
+            '<th>Speed</th>  '+
+            `<td>${pokemons.speed[num]}</td>`+
+          '</tr>'+
+        '</table>'+
+        ''+
+        '<div class="card__abilities">'+
+          '<h4 class="card__ability">'+
+            '<span class="card__label">Ability</span>'+
+            `${pokemons.abilities[num][0]}`+
+          '</h4>'+
+          '<h4 class="card__ability">'+
+            '<span class="card__label">Hidden Ability</span>'+
+            `${pokemons.abilities[num][pokemons.abilities[num].length-1]}`+
+          '</h4>'+
+        '</div>'+
+      '</figcaption>'+
+    '</figure>'
+  })
+  document.getElementById("cards").innerHTML = cards
+
+    
+  } 
+</script>
+    
+      
+  </body>
+</html>
