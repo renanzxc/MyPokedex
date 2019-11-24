@@ -4,73 +4,132 @@
     <meta charset="utf-8">
     <title>MyPokedex</title>
     <link rel="stylesheet" href="../static/css/style.css">
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
   </head>
-  <body background="https://i.ytimg.com/vi/v1SabYdIlZI/maxresdefault.jpg">
-    <input class="search" id="search" placeholder="Search Pokemon">
+  <body background="../static/img/background.jpg">
+    <input class="search" id="search" autofocus placeholder="Search Pokemon">
     <p id="alert"></p>
     <div id="cards">  
-      <figure class="card card--normal">
-        <div class="card__image-container">
-          <img src="https://cdn.bulbagarden.net/upload/thumb/e/e2/133Eevee.png/1200px-133Eevee.png" alt="Eevee" class="card__image">   
-        </div>
-        
+      <figure class="card card--grass">
+        <div class="card__image-container"><img src="https://assets.pokemon.com/assets/cms2/img/pokedex/full/001.png" alt="" class="card__image"> </div>
         <figcaption class="card__caption">
-          <h1 class="card__name">Eevee</h1>
-
-          <h3 class="card__type">
-            normal
-          </h3>
-
-          <table class="card__stats">
-            <tbody><tr>
-              <th>HP</th>
-              <td>55</td>
-            </tr>
-            <tr>
-              <th>Attack</th>
-              <td>55</td>
-            </tr>
-            
-            <tr>
-              <th>Defense</th>
-              <td>50</td>
-            </tr>
-
-            <tr>
-              <th>Special Attack</th>
-              <td>45</td>
-            </tr>
-            <tr>
-              <th>Special Defense</th>
-              <td>65</td>
-            </tr>
-            <tr>
-              <th>Speed</th>  
-              <td>55</td>
-            </tr>
-          </tbody></table>
-          
-          <div class="card__abilities">
-            <h4 class="card__ability">
-              <span class="card__label">Ability</span>
-              Run Away
-            </h4>
-            <h4 class="card__ability">
-              <span class="card__label">Hidden Ability</span>
-              Anticipation
-            </h4>
-          </div>
+            <h1 class="card__name">Bulbasaur</h1>
+            <h3 class="card__type">grass</h3>
+            <table class="card__stats">
+                <tbody>
+                    <tr>
+                        <th>HP</th>
+                        <td>45</td>
+                    </tr>
+                    <tr>
+                        <th>Attack</th>
+                        <td>49</td>
+                    </tr>
+                    <tr>
+                        <th>Defense</th>
+                        <td>49</td>
+                    </tr>
+                    <tr>
+                        <th>Special Attack</th>
+                        <td>65</td>
+                    </tr>
+                    <tr>
+                        <th>Special Defense</th>
+                        <td>65</td>
+                    </tr>
+                    <tr>
+                        <th>Speed</th>
+                        <td>45</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="card__abilities">
+            <h4 class="card__ability"><span class="card__label">Ability</span>Overgrow</h4>
+            <h4 class="card__ability"><span class="card__label">Hidden Ability</span>Chlorophyll</h4></div>
         </figcaption>
       </figure>
-
+  <figure class="card card--fire">
+    <div class="card__image-container"><img src="https://assets.pokemon.com/assets/cms2/img/pokedex/full/004.png" alt="" class="card__image"> </div>
+    <figcaption class="card__caption">
+        <h1 class="card__name">Charmander</h1>
+        <h3 class="card__type">fire</h3>
+        <table class="card__stats">
+            <tbody>
+                <tr>
+                    <th>HP</th>
+                    <td>39</td>
+                </tr>
+                <tr>
+                    <th>Attack</th>
+                    <td>52</td>
+                </tr>
+                <tr>
+                    <th>Defense</th>
+                    <td>43</td>
+                </tr>
+                <tr>
+                    <th>Special Attack</th>
+                    <td>60</td>
+                </tr>
+                <tr>
+                    <th>Special Defense</th>
+                    <td>50</td>
+                </tr>
+                <tr>
+                    <th>Speed</th>
+                    <td>65</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="card__abilities">
+            <h4 class="card__ability"><span class="card__label">Ability</span>Blaze</h4>
+            <h4 class="card__ability"><span class="card__label">Hidden Ability</span>Solar Power</h4></div>
+    </figcaption>
+  </figure>
+  <figure class="card card--water">
+    <div class="card__image-container"><img src="https://assets.pokemon.com/assets/cms2/img/pokedex/full/007.png" alt="" class="card__image"> </div>
+    <figcaption class="card__caption">
+        <h1 class="card__name">Squirtle</h1>
+        <h3 class="card__type">water</h3>
+        <table class="card__stats">
+            <tbody>
+                <tr>
+                    <th>HP</th>
+                    <td>44</td>
+                </tr>
+                <tr>
+                    <th>Attack</th>
+                    <td>48</td>
+                </tr>
+                <tr>
+                    <th>Defense</th>
+                    <td>65</td>
+                </tr>
+                <tr>
+                    <th>Special Attack</th>
+                    <td>50</td>
+                </tr>
+                <tr>
+                    <th>Special Defense</th>
+                    <td>64</td>
+                </tr>
+                <tr>
+                    <th>Speed</th>
+                    <td>43</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="card__abilities">
+            <h4 class="card__ability"><span class="card__label">Ability</span>Torrent</h4>
+            <h4 class="card__ability"><span class="card__label">Hidden Ability</span>Rain Dish</h4></div>
+    </figcaption>
+  </figure>
+  </div>
 <script type="text/javascript">
-  // document.querySelector('#search').addEventListener('keypress', function (e) {
-  //   searchPokemon()
-  // });
-
   document.querySelector('input[id="search"]').onkeyup = function() {
-    searchPokemon()
+    if(document.getElementById("search").value != null){
+      searchPokemon()
+    }
   }
   function searchPokemon(){
     let value = document.getElementById("search").value
@@ -93,11 +152,16 @@
 function createCards(numPokes, pokemons){
   var pad = "000"
   let cards = ''
+  let numPokemon = ''
   numPokes.forEach( num => {
+
     pokemons.abilities[num] = JSON.parse(pokemons.abilities[num].replace(/'/g, '"'))
+
+    numPokemon = pad.substring(0, pad.length - (num+1).toString().length) + (num+1).toString()
+
     cards += `<figure class="card card--${pokemons.type1[num]}">`+
       '<div class="card__image-container">'+
-        `<img src="https://assets.pokemon.com/assets/cms2/img/pokedex/full/${pad.substring(0, pad.length - (num+1).toString().length) + (num+1).toString()}.png" alt="{{name}}" class="card__image">   `+
+        `<img src="https://assets.pokemon.com/assets/cms2/img/pokedex/full/${numPokemon}.png" alt="{{name}}" class="card__image">   `+
       '</div>'+
       ''+
       '<figcaption class="card__caption">'+
@@ -149,9 +213,7 @@ function createCards(numPokes, pokemons){
       '</figcaption>'+
     '</figure>'
   })
-  document.getElementById("cards").innerHTML = cards
-
-    
+  document.getElementById("cards").innerHTML = cards   
   } 
 </script>
     
